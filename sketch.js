@@ -65,14 +65,14 @@ function drawSkeleton() {
     pose = poses[i];
     partA = pose.keypoints[3];
     partB = pose.keypoints[4];
-    if (partA.score > 0.1 && partB.score > 0.1) {
+    if (partA.score > 0.1) {
       push()
       imageMode(CENTER);
       image(earImg,partA.x,partA.y-25,50,50)
       pop()
       
     }
-    if (partA.score > 0.1 && partB.score > 0.1) {
+    if (partB.score > 0.1) {
       push()
       imageMode(CENTER);
       image(earImg,partB.x,partB.y,50,50)
