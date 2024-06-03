@@ -56,7 +56,7 @@ function draw() {
   translate(cam.width, 0);
   scale(-1, 1);
   image(cam, 0, 0);
-  //text("412730342 蕭雯萱")
+  text("412730342 蕭雯萱")
 }
 
 function drawSkeleton() {
