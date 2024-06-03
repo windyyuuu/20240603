@@ -75,7 +75,7 @@ function drawSkeleton() {
     if (partB.score > 0.1) {
       push()
       imageMode(CENTER);
-      image(earImg,partB.x,partB.y,50,50)
+      image(earImg,partB.x,partB.y-25,50,50)
       pop()
       
     }
