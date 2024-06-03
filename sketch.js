@@ -60,18 +60,18 @@ function draw() {
 
 function drawSkeleton() {
   // Draw all the tracked landmark points
-  for (let i = 0; i < poses.length; i++) {
-    pose = poses[i];
+  //for (let i = 0; i < poses.length; i++) {
+    //pose = poses[i];
     partA = pose.keypoints[3];
     partB = pose.keypoints[4];
     if (partA.score > 0.1 && partB.score > 0.1) {
-      image(earImg,partA.x-25,partA.y-25,50,50)
+      image(earImg,partA.x,partA.y,50,50)
       
     }
    
     
   }
-}
+//}
 
 /* Points (view on left of screen = left part - when mirrored)
   0 nose
