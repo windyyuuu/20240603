@@ -56,10 +56,11 @@ function draw() {
   translate(cam.width, 0);
   scale(-1, 1);
   image(cam, 0, 0);
+  //text("412730342 蕭雯萱")
 }
 
 function drawSkeleton() {
-   Draw all the tracked landmark points
+  // Draw all the tracked landmark points
   for (let i = 0; i < poses.length; i++) {
     pose = poses[i];
     partA = pose.keypoints[3];
