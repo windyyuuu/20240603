@@ -9,9 +9,8 @@ let video, bodypose, pose, keypoint, detector;
 let poses = [];
 
 function preload(){
-  earImg = loadImage("upload_e7b8681276bf136e02f932e89ea6fe54.gif")
-  }
-
+earImg = loadImage("upload_e7b8681276bf136e02f932e89ea6fe54.gif")
+}
 async function init() {
   const detectorConfig = {
     modelType: poseDetection.movenet.modelType.MULTIPOSE_LIGHTNING,
@@ -56,59 +55,40 @@ function draw() {
   translate(cam.width, 0);
   scale(-1, 1);
   image(cam, 0, 0);
-  text("412730342 蕭雯萱",50,50)
 }
 
-function drawSkeleton() {
+function drawSkeleton() { 
   // Draw all the tracked landmark points
   for (let i = 0; i < poses.length; i++) {
-    pose = poses[i];
-    partA = pose.keypoints[3];
-    partB = pose.keypoints[4];
-    if (partA.score > 0.1) {
-      push()
-      imageMode(CENTER);
-      image(earImg,partA.x-25,partA.y-25,50,50)
-      pop()
-      
-    }
-    if (partB.score > 0.1) {
-      push()
-      imageMode(CENTER);
-      image(earImg,partB.x-25,partB.y-25,50,50)
-      pop()
-      
-    }
-
-   partA = pose.keypoint[2]
-   if (partA.score>0.1){
-    push()
-    textSize(50)
-    fill("#960018")
-    scale(1,-1)
-    text("412730342 蕭雯萱",partA.x-50,partA.y-50)
-    pop()
-   }
+     pose = poses[i];
     
+    partA = pose.keypoints[3]; //右耳
+    partB = pose.keypoints[4]; //左耳
+    
+    if (partA.score > 0.1 ) {
+      image(earImg,partA.x, partA.y-25, 50, 50);
+    }
+    if (partB.score > 0.1 ) {
+      image(earImg,partB.x-40, partB.y-25, 50, 50);
+    }
+    partA = pose.keypoints[7]; //left elbow
+    partB = pose.keypoints[8]; //right elbow
+    
+    if (partA.score > 0.1 ) {
+      image(earImg,partA.x, partA.y-25, 50, 50);
+    }
+    if (partB.score > 0.1 ) {
+      image(earImg,partB.x-40, partB.y-25, 50, 50);
+    }
+    partA = pose.keypoints[0]; 
+    if (partA.score > 0.1 ) {
+      push();
+      textSize(20);
+      fill(0); 
+      textAlign(CENTER, CENTER); // 以文字中心為座標
+      scale(-1, 1); // 左右顛倒
+      text("412730342 蕭雯萱", -partA.x, partA.y - 50);
+      pop();
+    }
   }
 }
-
-/* Points (view on left of screen = left part - when mirrored)
-  0 nose
-  1 left eye
-  2 right eye
-  3 left ear
-  4 right ear
-  5 left shoulder
-  6 right shoulder
-  7 left elbow
-  8 right elbow
-  9 left wrist
-  10 right wrist
-  11 left hip
-  12 right hip
-  13 left kneee
-  14 right knee
-  15 left foot
-  16 right foot
-*/
