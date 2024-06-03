@@ -56,7 +56,7 @@ function draw() {
   translate(cam.width, 0);
   scale(-1, 1);
   image(cam, 0, 0);
-  text("412730342 蕭雯萱")
+  text("412730342 蕭雯萱",50,50)
 }
 
 function drawSkeleton() {
@@ -66,7 +66,7 @@ function drawSkeleton() {
     partA = pose.keypoints[3];
     partB = pose.keypoints[4];
     if (partA.score > 0.1 && partB.score > 0.1) {
-      image(earImg,partA.x,partA.y,50,50)
+      image(earImg,partA.x-50,partA.y-50,50,50)
       
     }
    
