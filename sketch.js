@@ -66,10 +66,22 @@ function drawSkeleton() {
     partA = pose.keypoints[3];
     partB = pose.keypoints[4];
     if (partA.score > 0.1 && partB.score > 0.1) {
-      image(earImg,partA.x-50,partA.y-50,50,50)
+      push()
+      imageMode(CENTER);
+      image(earImg,partA.x,partA.y,50,50)
+      image(earImg,partA.x,partA.y-25,50,50)
+      pop()
       
     }
-   
+   partA = pose.keypoint[2]
+   if (partA.score>0.1){
+    push()
+    textSize(50)
+    fill("#960018")
+    scale(1,-1)
+    text("412730342 蕭雯萱",partA.x-50,partA.y-50)
+    pop()
+   }
     
   }
 }
