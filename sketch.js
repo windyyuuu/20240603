@@ -8,6 +8,10 @@ https://www.tensorflow.org/hub/tutorials/movenet
 let video, bodypose, pose, keypoint, detector;
 let poses = [];
 
+function preload(){
+  earImg = loadImage("upload_e7b8681276bf136e02f932e89ea6fe54.gif")
+  }
+
 async function init() {
   const detectorConfig = {
     modelType: poseDetection.movenet.modelType.MULTIPOSE_LIGHTNING,
@@ -58,21 +62,13 @@ function drawSkeleton() {
   // Draw all the tracked landmark points
   for (let i = 0; i < poses.length; i++) {
     pose = poses[i];
-    // shoulder to wrist
-    for (j = 5; j < 9; j++) {
-      if (pose.keypoints[j].score > 0.1 && pose.keypoints[j + 2].score > 0.1) {
-        partA = pose.keypoints[j];
-        partB = pose.keypoints[j + 2];
-        line(partA.x, partA.y, partB.x, partB.y);
-      }
-    }
-    // shoulder to shoulder
     partA = pose.keypoints[3];
     partB = pose.keypoints[4];
     if (partA.score > 0.1 && partB.score > 0.1) {
-      line(partA.x, partA.y, partB.x, partB.y);
+      image(earImg,partA.x-25,partA.y-25,50,50)
       
     }
+   
     
   }
 }
